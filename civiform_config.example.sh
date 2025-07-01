@@ -16,7 +16,7 @@
 
 # REQUIRED
 # One of prod or staging.
-export CIVIFORM_MODE="staging"
+export CIVIFORM_MODE="prod"
 
 # REQUIRED
 # CiviForm server version to deploy.
@@ -74,7 +74,11 @@ export DOCKER_USERNAME="civiform"
 # Supported values: "oidc", "saml"
 export CIVIFORM_APPLICANT_AUTH_PROTOCOL=""
 
-
+# OPTIONAL
+# When true, deploys Grafana and Prometheus to collect server metrics.
+# Disabled by default in order to save costs. We recommend turning this
+# on for production instances.
+export MONITORING_STACK_ENABLED="false"
 
 # Deployment-specific Civiform configuration
 #################################################
@@ -121,8 +125,9 @@ export BASE_URL=""
 
 # OPTIONAL
 # When set enables demo mode for the civiform application. Should be set for
-# staging but not prod. The value is hostname without protocol and should correspond
-# BASE_URl. Example: "civiform.seattle.gov"
+# demo instances when you want access to "dev tools" but not prod or sites with data.
+# The value is hostname without protocol and should correspond to the BASE_URl.
+# Example: "civiform.seattle.gov"
 export STAGING_HOSTNAME=""
 
 # OPTIONAL
